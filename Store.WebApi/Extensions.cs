@@ -20,7 +20,8 @@ namespace Store.WebApi
                 Slug = (product.Name+"-"+product.Description).Slugify(),
                 DiscountPercentage = product.DiscountPercentage,
                 IsFeatured = product.IsFeatured,
-                NetPrice = product.Price - (product.Price * product.DiscountPercentage / 100)
+                NetPrice = product.Price - (product.Price * product.DiscountPercentage / 100),
+                Stocks = product.Stocks
             };
         }
     }

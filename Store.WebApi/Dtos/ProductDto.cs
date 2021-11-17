@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Store.WebApi.Interfaces;
 
 namespace Store.WebApi.Dtos
 {
@@ -16,5 +17,6 @@ namespace Store.WebApi.Dtos
         public double DiscountPercentage { get; set; }
         public double NetPrice { get; set; }
         public Guid Id { get; set; }
+        public List<IStock> Stocks { get; set; }
     }
 }

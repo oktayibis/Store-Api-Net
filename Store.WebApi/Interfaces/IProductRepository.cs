@@ -13,6 +13,8 @@ namespace Store.WebApi.Interfaces
         Product DeleteProduct(Guid id);
         IEnumerable<Product> SearchProduct(string search);
         Product GetProductBySlug(string slug);
+        Product UpdateStock(Guid id, IStock stock);
+        Product RemoveStock(Guid id, Guid stockId);
     }
 
 }

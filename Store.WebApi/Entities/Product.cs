@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Store.WebApi.Interfaces;
 
 namespace Store.WebApi.Entities
 {
@@ -20,5 +21,6 @@ namespace Store.WebApi.Entities
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public Guid Id { get; set; }
+        public List<IStock> Stocks { get; set; }
     }
 }

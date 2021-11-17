@@ -72,5 +72,42 @@ namespace Store.WebApi.Repositories
         {
             return _products.FirstOrDefault(p => p.Slug == slug);
         }
+        
+        // Add stock to product
+        public Product UpdateStock(Guid id, IStock stock)
+        {
+            var existingProduct = GetProduct(id);
+            
+            if (existingProduct.Stocks is null)
+            {
+                existingProduct.Stocks = new List<IStock>();
+            }
+            var existingStock = existingProduct.Stocks.FirstOrDefault(s => s.Size == stock.Size && s.ColorId == stock.ColorId);
+            if (existingStock != null)
+            {
+                existingStock.Quantity += stock.Quantity;
+            }
+            else
+            {
+                existingProduct.Stocks.Add(stock);
+            }
+         
+
+
+            return existingProduct;
+        }
+
+        public Product RemoveStock(Guid productId, Guid stockId)
+        {
+            var existingProduct = GetProduct(productId);
+            var existingStock = existingProduct.Stocks.FirstOrDefault(s => s.Id == stockId);
+            if (existingStock != null)
+            {
+                existingProduct.Stocks.Remove(existingStock);
+            }
+
+            return existingProduct;
+        }
+        
     }
 }
